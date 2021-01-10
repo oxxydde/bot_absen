@@ -76,6 +76,3 @@ class testAbsent:
 
         input("PRESS ENTER TO EXIT...")
         self.chrDrv.quit()
-    
-
-testAbsent(6).Execute()
