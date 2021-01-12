@@ -1,4 +1,5 @@
 import os
+from datetime import datetime
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
@@ -49,6 +50,8 @@ class testAbsent:
 
             self.confirm_hadir_btn = self.chrDrv.find_element_by_xpath('//a[@id=\'konfirmasikehadiran\']')
             self.confirm_hadir_btn.click()
+
+            WebDriverWait(self.chrDrv, 20).until(ExpCond.presence_of_element_located((By.XPATH, '//div[@class=\'company-title2\']')))
             
             return True
         
@@ -70,12 +73,9 @@ class testAbsent:
         self.kelas_url_idx = 'B' + str(self.row_num)
         
         if self.doAbsen(self.xlsx_Data, self.kelas_url_idx) :
-            print("Mapel : %s\nStatus : Success" % self.mapel_name)
+            print("\nMapel : %s\nStatus : Success at %s" % (self.mapel_name, datetime.now().strftime("%H:%M:%S")))
         else :
-            print("Mapel : %s\nStatus : Failed" % self.mapel_name)
+            print("\nMapel : %s\nStatus : Failed" % self.mapel_name)
 
         input("PRESS ENTER TO EXIT...")
         self.chrDrv.quit()
-    
-
-testAbsent(6).Execute()
