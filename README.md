@@ -14,3 +14,5 @@ Documentation will be added later. :)
 
 Thanks,
 OXXYDDE
+
+NOTE : This repository is no longer being maintained, but you can fork this repo and modify by yourself. Thanks
